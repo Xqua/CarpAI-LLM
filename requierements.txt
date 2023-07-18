@@ -1,0 +1,6 @@
+huggingface-hub
+langchain
+transformers
+torch
+sentencepiece
+protobuf==3.20.3
