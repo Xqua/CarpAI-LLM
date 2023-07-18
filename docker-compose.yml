@@ -1,0 +1,10 @@
+version: "3.8"
+services:
+  tinyllm:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        HUGGING_FACE_API_KEY: $HUGGING_FACE_API_KEY
+
+
