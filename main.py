@@ -1,4 +1,3 @@
-import argparse
 from langchain.llms import HuggingFacePipeline
 from langchain import PromptTemplate, LLMChain
 import json
@@ -13,12 +12,6 @@ import requests
 
 os.environ["HF_DATASETS_OFFLINE"]="1" 
 os.environ["TRANSFORMERS_OFFLINE"]="1"
-
-parser = argparse.ArgumentParser(description="Lilypad LLM")
-parser.add_argument("--i", dest="ipfs", type=str, help="IPFS Hash", required=True)
-
-args=parser.parse_args()
-ipfs=args.ipfs
 
 model_id = "lmsys/fastchat-t5-3b-v1.0"
 llm = HuggingFacePipeline.from_model_id(
@@ -36,12 +29,7 @@ Question: {question}
 
 Answer:"""
 
-
-r = requests.get(f"https://ipfs.io/ipfs/{ipfs}/")
-content  = r.content
-
-print(content)
-
+content = open("/prompt_template.json").read()
 json_content = json.loads(content)
 
 print(json_content)
@@ -57,6 +45,7 @@ result = llm_chain(json_content["parameters"])
 
 print(result)
 
-f = open("./output/result.json", "w")
+f = open("/output/result.json", "w")
 json.dump(result, f)
 f.close()
+
