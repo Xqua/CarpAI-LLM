@@ -57,6 +57,6 @@ result = llm_chain(json_content["parameters"])
 
 print(result)
 
-f = open("./outputs/result.json", "w")
+f = open("./output/result.json", "w")
 json.dump(result, f)
 f.close()
