@@ -25,7 +25,7 @@ llm = HuggingFacePipeline.from_model_id(
     model_id=model_id,
     task="text2text-generation",
     model_kwargs={"temperature": 0, "max_length": 1000},
-    # device=0
+    device=0
 )
 
 default_template = """
